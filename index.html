@@ -19,7 +19,7 @@
     <div class="now-serving-card card">
       <h2>Now Serving</h2>
       <div id="nowServing">—</div>
-    </div>
+  </div>
 
     <!-- Main Grid -->
     <div class="grid">
@@ -36,29 +36,31 @@
             <option>Pharmacy</option>
           </select>
         </div>
+        <div class="form-group" id="emergencyDesc" style="display:none;">
+          <input type="text" placeholder="Emergency details (reason for admission)" />
+        </div>
         <div class="form-group checkbox">
           <label><input id="priorityCheck" type="checkbox"> Priority (elderly/critical)</label>
         </div>
         <div class="form-group">
           <button id="genBtn" class="primary">Generate Token</button>
           <button id="callNextBtn" class="small">Call Next</button>
-          <button id="simulateEmergency" class="small">Simulate Emergency</button>
-          <button id="clearBtn" class="small">Clear Queue</button>
         </div>
         <div id="queueStats" class="stats"></div>
       </div>
 
       <!-- Live Queue -->
       <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
         <h3>Live Queue</h3>
+        <button id="historyBtn" class="small">View History</button>
+        </div>
         <input id="searchInput" placeholder="Search token or name" />
         <div id="queueContainer" class="queue-list"></div>
       </div>
-    </div>
-  </div>
 
-  <!-- Toast Notification -->
-  <div id="toast" class="toast"></div>
+      <!-- Toast Notification -->
+      <div id="toast" class="toast"></div>
 
   <script src="script.js"></script>
 </body>

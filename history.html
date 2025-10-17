@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient History</title>
+  <style>
+    body { margin:0; font-family: 'Inter', sans-serif; background:#f4f7fb; padding:30px; color:#111; }
+    .container { max-width:1200px; margin:auto; }
+    h2 { font-size:28px; color:#0b74ff; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; }
+    #clearHistory { background:#ff5252; color:#fff; border:none; padding:10px 16px; border-radius:12px; cursor:pointer; font-size:14px; }
+    #clearHistory:hover { opacity:0.9; }
+
+    .history-list { display:flex; flex-direction:column; gap:12px; max-height:600px; overflow-y:auto; }
+    .history-item { background:#ffffff; border-radius:12px; padding:16px; box-shadow:0 6px 18px rgba(0,0,0,0.06); display:flex; justify-content:space-between; }
+    .history-left { display:flex; flex-direction:column; }
+    .history-left strong { font-size:16px; color:#0b74ff; }
+    .muted { font-size:12px; color:#6b7280; margin-top:4px; }
+    .emergency { color:#ff5252; font-weight:600; margin-top:4px; }
+    .served { color:#009688; font-weight:600; margin-top:4px; }
+    .removed { color:#ff9800; font-weight:600; margin-top:4px; }
+
+    #backBtn {
+      background:#0b74ff; color:#fff; border:none; padding:10px 16px; 
+      border-radius:12px; cursor:pointer; font-size:14px;
+    }
+    #backBtn:hover { opacity:0.9; }
+    .btn-group { display:flex; justify-content:space-between; align-items:center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="btn-group">
+      <h2>Patient History</h2>
+      <div>
+        <button id="backBtn">⬅ Back</button>
+        <button id="clearHistory">Clear History</button>
+      </div>
+    </div>
+    <div id="historyContainer" class="history-list"></div>
+  </div>
+
+  <script>
+    const historyContainer = document.getElementById('historyContainer');
+    let history = JSON.parse(localStorage.getItem('swiftq_history_v1') || '[]');
+
+    function renderHistory() {
+      historyContainer.innerHTML = '';
+      if(!history.length){
+        historyContainer.innerHTML = '<div class="muted">No history available.</div>';
+        return;
+      }
+
+      history.forEach(t => {
+        const div = document.createElement('div');
+        div.className = 'history-item';
+        div.innerHTML = `
+          <div class="history-left">
+            <strong>${t.id} — ${t.name} (${t.department})</strong>
+            ${t.emergency && t.emergencyDesc ? `<div class="emergency">EMERGENCY: ${t.emergencyDesc}</div>` : ''}
+            <div class="muted">
+              ${t.servedAt ? `<span class="served">Served at: ${new Date(t.servedAt).toLocaleString()}</span>` 
+              : t.removedAt ? `<span class="removed">Removed at: ${new Date(t.removedAt).toLocaleString()}</span>` 
+              : '-'}
+            </div>
+          </div>
+        `;
+        historyContainer.appendChild(div);
+      });
+    }
+
+    renderHistory();
+
+    document.getElementById('clearHistory').onclick = () => {
+      if(confirm('Are you sure you want to clear all history?')){
+        history = [];
+        localStorage.setItem('swiftq_history_v1', JSON.stringify(history));
+        localStorage.setItem('swiftq_total_today_v1', 0); // 👈 Reset today's total to 0
+        renderHistory();
+        alert('History cleared and Today count reset to 0!');
+      }
+    };
+
+    document.getElementById('backBtn').onclick = () => {
+      window.location.href = 'index.html';
+    };
+  </script>
+</body>
+</html>
