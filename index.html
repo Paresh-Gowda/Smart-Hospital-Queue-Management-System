@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwiftQ – Smart Hospital Queue</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <h1>SwiftQ — Smart Hospital Queue</h1>
+      <p class="lead">Manage patients efficiently with automated token generation, live queue display, and emergency handling.</p>
+    </header>
+
+    <!-- Now Serving -->
+    <div class="now-serving-card card">
+      <h2>Now Serving</h2>
+      <div id="nowServing">—</div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="grid">
+
+      <!-- Token Generation Form -->
+      <div class="card">
+        <h3>Generate Token</h3>
+        <div class="form-group">
+          <input id="patientName" placeholder="Patient name (optional)" />
+          <select id="department">
+            <option>General</option>
+            <option>OPD</option>
+            <option>Emergency</option>
+            <option>Pharmacy</option>
+          </select>
+        </div>
+        <div class="form-group checkbox">
+          <label><input id="priorityCheck" type="checkbox"> Priority (elderly/critical)</label>
+        </div>
+        <div class="form-group">
+          <button id="genBtn" class="primary">Generate Token</button>
+          <button id="callNextBtn" class="small">Call Next</button>
+          <button id="simulateEmergency" class="small">Simulate Emergency</button>
+          <button id="clearBtn" class="small">Clear Queue</button>
+        </div>
+        <div id="queueStats" class="stats"></div>
+      </div>
+
+      <!-- Live Queue -->
+      <div class="card">
+        <h3>Live Queue</h3>
+        <input id="searchInput" placeholder="Search token or name" />
+        <div id="queueContainer" class="queue-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
