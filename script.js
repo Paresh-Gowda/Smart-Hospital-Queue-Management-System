@@ -300,3 +300,4 @@ ensureDefaultPatients();
 sortQueue();
 renderQueue();
 renderNowServing();
+
