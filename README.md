@@ -1,13 +1,13 @@
-# 🏥 SwiftQ — Smart Hospital Queue 
+# 🏥 SwiftQ — Smart Hospital Queue
 
-SwiftQ is a smart hospital queue management system built using HTML, CSS, and JavaScript.
-It automates patient token generation, displays live queue updates, and dynamically manages priority or emergency cases.
-The system ensures smooth patient flow, reduces waiting times, and provides real-time updates for hospital staff and patients through an intuitive, hospital-friendly interface.
+SwiftQ is an interactive hospital queue management system built using HTML, CSS, and JavaScript.
+ It automates patient token generation, displays a live queue, and dynamically manages priority and emergency cases, ensuring smoother patient flow and reduced waiting times.
+  The interface is designed with a hospital-friendly card layout, color-coded indicators, and a modern blue theme for clarity and usability.
 
-Designed with a clean and spacious UI/UX, SwiftQ features live countdown timers, automatic next-patient calls, and persistent queue data using browser LocalStorage. 
-Its calm blue theme and card-based layout reflect a modern hospital environment, combining professionalism with ease of use.
-The system includes features like search, filtering, emergency simulation, and re-queuing — all in a single-page application.
+The system features real-time Now Serving updates with countdown timers, animated progress bars, and interactive controls for calling, promoting, or removing patients.
+All served or removed patients are recorded in a history page, and the daily patient count is automatically synced with the history.
+Users can search for tokens, simulate emergencies, and clear the queue or history, which also resets the daily totals.
 
-This project helped me strengthen my understanding of frontend logic, user experience design, and real-time data handling.
-While it currently runs as a demo, SwiftQ has strong potential for real-world hospital use by integrating databases, IoT display boards, or notification systems.
-It demonstrates how technology can simplify hospital management and enhance patient experience effectively.
+SwiftQ demonstrates practical frontend logic, real-time data handling, and UX-focused design.
+While it currently runs in the browser using LocalStorage for persistence, it has strong potential for real-world hospital use through backend integration, IoT display boards, or notification systems.
+This project showcases how technology can simplify hospital management and improve patient experience efficiently.

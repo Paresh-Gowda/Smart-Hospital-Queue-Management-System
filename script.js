@@ -95,8 +95,7 @@ function renderNowServing() {
     return;
   }
 
-  let remainingTime = EST_TIME_PER_PATIENT * 60; // seconds
-  const totalTime = remainingTime;
+  let remainingTime = EST_TIME_PER_PATIENT * 60; 
 
   function updateDisplay() {
     const mins = Math.floor(remainingTime / 60);
@@ -118,7 +117,6 @@ function renderNowServing() {
         bar.style.width = widthPercent + '%';
       }
     });
-
     if (remainingTime <= 0) {
       clearInterval(countdownInterval);
       countdownInterval = null;

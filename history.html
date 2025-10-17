@@ -74,7 +74,7 @@
       if(confirm('Are you sure you want to clear all history?')){
         history = [];
         localStorage.setItem('swiftq_history_v1', JSON.stringify(history));
-        localStorage.setItem('swiftq_total_today_v1', 0); // 👈 Reset today's total to 0
+        localStorage.setItem('swiftq_total_today_v1', 0); 
         renderHistory();
         alert('History cleared and Today count reset to 0!');
       }
