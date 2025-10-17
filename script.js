@@ -98,11 +98,12 @@ function renderNowServing() {
   let remainingTime = EST_TIME_PER_PATIENT * 60; 
 
   function updateDisplay() {
+    const totalTime = EST_TIME_PER_PATIENT * 60;
     const mins = Math.floor(remainingTime / 60);
     const secs = remainingTime % 60;
     display.textContent = `${nowServing.id} — ${nowServing.name} (${nowServing.department}) | ${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
-
     const percent = remainingTime / totalTime;
+  
     if (percent > 0.5) display.style.backgroundColor = `rgba(0,200,0,${0.2 + 0.6*(percent-0.5)*2})`;
     else if (percent > 0.2) display.style.backgroundColor = `rgba(255,200,0,${0.2 + 0.6*((percent-0.2)/0.3)})`;
     else display.style.backgroundColor = `rgba(255,50,50,${0.4 + 0.6*(0.2-percent)/0.2})`;
@@ -112,7 +113,7 @@ function renderNowServing() {
       const tokenDiv = document.getElementById(`token-${t.id}`);
       if (tokenDiv) {
         const bar = tokenDiv.querySelector('.wait-bar');
-        const elapsed = EST_TIME_PER_PATIENT * (idx + 1) - remainingTime / 60; // in minutes
+        const elapsed = EST_TIME_PER_PATIENT * (idx + 1) - remainingTime / 60; 
         const widthPercent = Math.min((elapsed / (queue.length * EST_TIME_PER_PATIENT)) * 100, 100);
         bar.style.width = widthPercent + '%';
       }
@@ -285,9 +286,9 @@ function ensureDefaultPatients() {
 
   if (!queue || queue.length === 0) {
   queue = [
-    { id: "T1", name: "Rita Sharma", department: "General", priority: false, emergency: false },
-    { id: "T2", name: "Aman Verma", department: "OPD", priority: false, emergency: false },
-    { id: "T3", name: "Maya Patel", department: "Pharmacy", priority: false, emergency: false }
+    { id: "T1", name: "Nihal Chengappa", department: "General", priority: false, emergency: true },
+    { id: "T2", name: "Paresh", department: "OPD", priority: true, emergency: false },
+    { id: "T3", name: "Hitesh", department: "Pharmacy", priority: false, emergency: false }
   ];
   save(); 
   renderQueue(); 
