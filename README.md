@@ -1,5 +1,8 @@
 # 🏥 SwiftQ — Smart Hospital Queue
 
+## Live Demo
+[View Here](https://swiftq-paresh.netlify.app/)
+
 SwiftQ is an interactive hospital queue management system built using HTML, CSS, and JavaScript.
 It automates patient token generation, displays a live queue, and dynamically manages priority and emergency cases, ensuring smoother patient flow and reduced waiting times.
 The interface is designed with a hospital-friendly card layout, color-coded indicators, and a modern blue theme for clarity and usability.
